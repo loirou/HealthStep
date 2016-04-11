@@ -13,8 +13,7 @@ CMStepCounter获取健康数据今天的步数
     // 结束日期
     NSDate *endDate = [calendar dateByAddingUnit:NSCalendarUnitDay value:1 toDate:startDate options:0];
     
-    if ([CMStepCounter isStepCountingAvailable]) {
-
+      if ([CMStepCounter isStepCountingAvailable]) {
         [self.stepCounter  queryStepCountStartingFrom:startDate to:endDate toQueue:self.operationQueue withHandler:^(NSInteger numberOfSteps, NSError * _Nullable error) {
             NSLog(@"%ld",numberOfSteps);
             dispatch_async(dispatch_get_main_queue(), ^{
@@ -30,7 +29,7 @@ CMStepCounter获取健康数据今天的步数
     }
 
 查询当前步数
-if ([CMStepCounter isStepCountingAvailable]) {
+      if ([CMStepCounter isStepCountingAvailable]) {
         
         self.stepCounter = [[CMStepCounter alloc] init];
         [self.stepCounter startStepCountingUpdatesToQueue:self.operationQueue
@@ -56,7 +55,7 @@ if ([CMStepCounter isStepCountingAvailable]) {
 
 获取运动状态
 
-if ([CMMotionActivityManager isActivityAvailable]) {
+      if ([CMMotionActivityManager isActivityAvailable]) {
         
         self.activityManager = [[CMMotionActivityManager alloc] init];
         
