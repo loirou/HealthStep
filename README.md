@@ -1,8 +1,7 @@
 # HealthStep
 CMStepCounter获取健康数据今天的步数
 
-   __weak ViewController *weakSelf = self;
-   
+      __weak ViewController *weakSelf = self;
     self.operationQueue = [[NSOperationQueue alloc] init];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -29,8 +28,8 @@ CMStepCounter获取健康数据今天的步数
     }
 
 查询当前步数
+
       if ([CMStepCounter isStepCountingAvailable]) {
-        
         self.stepCounter = [[CMStepCounter alloc] init];
         [self.stepCounter startStepCountingUpdatesToQueue:self.operationQueue
                                                  updateOn:1
@@ -56,9 +55,7 @@ CMStepCounter获取健康数据今天的步数
 获取运动状态
 
       if ([CMMotionActivityManager isActivityAvailable]) {
-        
         self.activityManager = [[CMMotionActivityManager alloc] init];
-        
         [self.activityManager startActivityUpdatesToQueue:self.operationQueue
                                               withHandler:
          ^(CMMotionActivity *activity) {
