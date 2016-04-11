@@ -1,7 +1,8 @@
 # HealthStep
 CMStepCounter获取健康数据今天的步数
 
-__weak ViewController *weakSelf = self;
+   __weak ViewController *weakSelf = self;
+   
     self.operationQueue = [[NSOperationQueue alloc] init];
     
     NSCalendar *calendar = [NSCalendar currentCalendar];
