@@ -28,3 +28,49 @@ CMStepCounter获取健康数据今天的步数
             });
         }];
     }
+
+查询当前步数
+if ([CMStepCounter isStepCountingAvailable]) {
+        
+        self.stepCounter = [[CMStepCounter alloc] init];
+        [self.stepCounter startStepCountingUpdatesToQueue:self.operationQueue
+                                                 updateOn:1
+                                              withHandler:
+         ^(NSInteger numberOfSteps, NSDate *timestamp, NSError *error) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 if (error) {
+                     UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Opps!" message:@"error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                     [error show];
+                 }
+                 else {
+                     
+                     NSString *text = [NSString stringWithFormat:@"当前步数: %ld", (long)numberOfSteps];
+                     //这里是步数
+                     weakSelf.stepsLabel.text = text;
+                 }
+             });
+         }];
+    }
+
+获取运动状态
+
+if ([CMMotionActivityManager isActivityAvailable]) {
+        
+        self.activityManager = [[CMMotionActivityManager alloc] init];
+        
+        [self.activityManager startActivityUpdatesToQueue:self.operationQueue
+                                              withHandler:
+         ^(CMMotionActivity *activity) {
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 
+                 NSString *status = [weakSelf statusForActivity:activity];
+                 NSString *confidence = [weakSelf stringFromConfidence:activity.confidence];
+                 
+                 weakSelf.statusLabel.text = [NSString stringWithFormat:@"状态: %@", status];
+                 weakSelf.confidenceLabel.text = [NSString stringWithFormat:@"速度: %@", confidence];
+             });
+         }];
+    }
