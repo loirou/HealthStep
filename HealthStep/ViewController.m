@@ -48,8 +48,8 @@
     
     if (!([CMStepCounter isStepCountingAvailable] || [CMMotionActivityManager isActivityAvailable])) {
         
-        NSString *msg = @"sorry，不能运行哦,这demo只支持iPhone5s以上机型.";
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Opps!"
+        NSString *msg = @"抱歉，不能运行哦,此demo只支持iPhone5s以上机型.";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No!"
                                                         message:msg
                                                        delegate:nil
                                               cancelButtonTitle:@"OK"
@@ -108,7 +108,7 @@
              dispatch_async(dispatch_get_main_queue(), ^{
                  
                  if (error) {
-                     UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Opps!" message:@"error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                     UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"No!" message:@"error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                      [error show];
                  }
                  else {
@@ -172,7 +172,7 @@
             NSLog(@"%ld",numberOfSteps);
             dispatch_async(dispatch_get_main_queue(), ^{
                 if (error) {
-                    UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"Opps!" message:@"error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+                    UIAlertView *error = [[UIAlertView alloc] initWithTitle:@"No!" message:@"error" delegate:self cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
                     [error show];
                 }
                 else {
